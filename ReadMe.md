@@ -65,3 +65,30 @@ console.log("message");
 
 In this case logger module create and loading and using that module in another file (app.js)
 In this case require function use to load the module.
+
+---
+
+#### module wrapper function
+
+when ever we write like this
+
+##### ex:-
+
+function log(message) {
+// send an HTTP request
+console.log(message);
+}
+module.exports.log = log;
+// module.exports.endPoint = url;
+
+It Wrapp with like this
+function (exports,require,module,**fileName,**dirname){
+var url = "h
+
+function log(message) {
+// send an HTTP request
+console.log(message);
+}
+module.exports.log = log;
+
+}
