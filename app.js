@@ -1,2 +1,4 @@
-var message = "";
-console.log(global.message);
+const logger = require("./logger.js");
+console.log(logger);
+
+console.log("message");
