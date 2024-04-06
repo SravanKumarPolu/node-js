@@ -1,5 +1,7 @@
 # Node.js file
 
+  Node.js is server side js runtime environment.it allow to run js code on the server, enabling to  build scalable ,event driven applications. Node.js is non-blocking and asychronous nature by deafult.
+
 ## Note:
 
 1. we don't have window objects in Node.js.
@@ -18,11 +20,11 @@
 
 ### in below values and functions are define but globally it's not define
 
-### ex:
+### example:
 
-##### var message=''
+ var message=''
 
-##### console.log(global.message)
+ console.log(global.message)
 
 In this example, a variable is declared using the var keyword, but it does not add global objects. Its scope is limited to the page only.
 
@@ -33,7 +35,7 @@ In this example, a variable is declared using the var keyword, but it does not a
 Every file in Node application consider as module.
 Modules help organize code into smaller, more manageable units and promote reusability.
 
-##### ex:
+##### example:
 
 app.js
 var sayHello = fucntion();
@@ -46,7 +48,7 @@ In this example app.js is main module.
 
 #### Creat module and loading module
 
-###### ex:-
+###### example:-
 
 1. // logger.js
    var url = "http://mylogger.io/log";
@@ -72,7 +74,7 @@ In this case require function use to load the module.
 
 when ever we write like this
 
-##### ex:-
+##### example:-
 
 function log(message) {
 // send an HTTP request
@@ -128,7 +130,7 @@ The OS Module (os) provides operating system-related utility methods and informa
 whenever run os module
 like this way
 
-#### ex:
+#### example:
 
 const os = require("os");
 const totalMemory = os.totalmem();
@@ -150,7 +152,7 @@ This module we have a comprehensive set of methods for working with files and di
   1. Offers functions for performing file I/O operations such as reading from and writing to files, creating and deleting directories, and manipulating file metadata.
   2. Supports both synchronous and asynchronous file operations, providing flexibility for different use cases and application requirements.
 
-#### ex:
+#### example:
 
 const fs = require("fs");
 const files = fs.readdirSync("./");
@@ -160,7 +162,7 @@ console.log(files);
 
 [ '.git', 'app.js', 'logger.js', 'ReadMe.md' ] this are method of this folder in my machine.
 
-#### ex2:
+#### example2:
 
 asyn
 const fs = require("fs");
@@ -174,7 +176,7 @@ else console.log("result", files);
 
 result [ '.git', 'app.js', 'logger.js', 'ReadMe.md' ]
 
-#### ex3 :
+#### example3 :
 
 fs.readdir("$", function (err, files) {
 if (err) console.log("error", err);
