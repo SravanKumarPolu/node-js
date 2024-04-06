@@ -218,3 +218,40 @@ emitter.emit("messageLogged");
 output like:
 D:\Sandbox Projects\node-js>node app.js
 Listener called
+
+---
+
+#### event arguments and extends emitters
+
+#### example:
+
+// Logger.js
+const EventEmitter = require("events");
+
+var url = "http://mylogger.io/log";
+
+class Logger extends EventEmitter {
+log(message) {
+console.log(message);
+//Raise an event
+this.emit("messageLogged", { id: 1, url: "http://" });
+}
+}
+module.exports = Logger;" and "const EventEmitter = require("events");
+
+// app.js
+const Logger = require("./logger");
+const logger = new Logger();
+
+//Resister a listener
+logger.on("messageLogged", (arg) => {
+console.log("Listener called", arg);
+});
+
+logger.log("message")
+
+#### Out put:
+
+When the log method of this Logger class is called, it emits a "messageLogged" event with an object containing id and url properties as arguments. This is achieved using this.emit("messageLogged", { id: 1, url: "http://" });.
+
+In the second snippet, an instance of the Logger class is created, and a listener is registered for the "messageLogged" event using the on method of EventEmitter. The listener function receives the event arguments passed when emitting the event in the Logger class ({ id: 1, url: "http://" }). Inside the listener function, it logs "Listener called" along with the event arguments.

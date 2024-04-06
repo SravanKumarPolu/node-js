@@ -27,13 +27,27 @@
 // });
 
 //Event Emitter class(properties)
+// const EventEmitter = require("events");
+// const emitter = new EventEmitter();
+
+// //Resister a listener
+// emitter.on("messageLogged", function () {
+//   console.log("Listener called");
+
+// });
+
+// //single in event or Raise an event
+// emitter.emit("messageLogged");
+
+//event arguments and extends emitters
 const EventEmitter = require("events");
-const emitter = new EventEmitter();
+
+const Logger = require("./logger");
+const logger = new Logger();
 
 //Resister a listener
-emitter.on("messageLogged", function () {
-  console.log("Listener called");
+logger.on("messageLogged", (arg) => {
+  console.log("Listener called", arg);
 });
 
-//single in event or Raise an event
-emitter.emit("messageLogged");
+logger.log("message");
