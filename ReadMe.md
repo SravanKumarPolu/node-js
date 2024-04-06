@@ -92,3 +92,129 @@ console.log(message);
 module.exports.log = log;
 
 }
+
+#### Note:
+
+Node does not execute directly over code it always wrap with somthing like above.
+
+---
+
+#### path.parse(path)
+
+This code uses Node.js path module to parse the **filename (which represents the current filename being executed) and then logs the parsed object to the console.
+const path=require('path');
+var pathObj=path.parse(**filename)
+cosole.log(pathObj);
+
+When you run this code with node app.js, it should indeed output
+
+{
+root: 'D:\\',
+dir: 'D:\\Sandbox Projects\\node-js',
+base: 'app.js',
+ext: '.js',
+name: 'app'
+}
+
+### OS module
+
+The OS Module (os) provides operating system-related utility methods and information, allowing Node.js applications to interact with the underlying operating system.
+
+- functionality:
+  1. Offers functions to retrieve various system-related information such as CPU architecture, memory usage, network interfaces.
+  2. Facilitates cross-platform compatibility by abstracting away platform-specific differences, ensuring consistent behavior across different operating systems.
+  3. Allows Node.js applications to interact with the file system, manage processes, and work with network interfaces, among other system-level operations.
+
+whenever run os module
+like this way
+
+#### ex:
+
+const os = require("os");
+const totalMemory = os.totalmem();
+const freeMemory = os.freemem();
+
+##### output like this:-
+
+total memory16873676800
+free memory8809263104
+
+---
+
+#### File System Module
+
+The File System Module (fs) provides APIs for working with the file system, allowing Node.js applications to read, write, and manipulate files and directories.
+This module we have a comprehensive set of methods for working with files and directories.
+
+- functionality:
+  1. Offers functions for performing file I/O operations such as reading from and writing to files, creating and deleting directories, and manipulating file metadata.
+  2. Supports both synchronous and asynchronous file operations, providing flexibility for different use cases and application requirements.
+
+#### ex:
+
+const fs = require("fs");
+const files = fs.readdirSync("./");
+console.log(files);
+
+##### ouput:
+
+[ '.git', 'app.js', 'logger.js', 'ReadMe.md' ] this are method of this folder in my machine.
+
+#### ex2:
+
+asyn
+const fs = require("fs");
+
+fs.readdir("./", function (err, files) {
+if (err) console.log("error", err);
+else console.log("result", files);
+});
+
+### out put:
+
+result [ '.git', 'app.js', 'logger.js', 'ReadMe.md' ]
+
+#### ex3 :
+
+fs.readdir("$", function (err, files) {
+if (err) console.log("error", err);
+else console.log("result", files);
+});
+
+#### out put:
+
+error [Error: ENOENT: no such file or directory, scandir 'D:\Sandbox Projects\node-js\$'] {
+errno: -4058,
+code: 'ENOENT',
+syscall: 'scandir',
+path: 'D:\\Sandbox Projects\\node-js\\$'
+}
+
+---
+
+#### Events module
+
+The Event Module (events) is fundamental to Node.js's event-driven architecture. It allows developers to handle events, emit events, and create custom event emitters.
+
+- functionality:
+  1. Provides the EventEmitter class, which facilitates event handling and emitting.
+  2. Enables the creation of custom events and event emitters, empowering developers to structure their applications around event-driven paradigms.
+  3. Plays a crucial role in facilitating asynchronous, non-blocking behavior in Node.js applications
+  4. Supports the decoupling of components in an application by allowing them to communicate through events rather than direct method calls, enhancing modularity and scalability.
+
+##### Event emitter Class Ex:
+
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
+
+//Resister a listener
+emitter.on("messageLogged", function () {
+console.log("Listener called");
+});
+
+//single in event or Raise an event
+emitter.emit("messageLogged");
+
+output like:
+D:\Sandbox Projects\node-js>node app.js
+Listener called
